@@ -35,15 +35,15 @@ public class UserMealsUtil {
             mapCalories.merge(meal.getDateTime().getDayOfYear(),meal.getCalories(),Integer::sum);
         }
 
-        List<UserMealWithExcess> mealsExcess = new ArrayList<>();
+        List<UserMealWithExcess> mealExcess = new ArrayList<>();
         for (UserMeal meal : meals) {
             if (meal.getDateTime().getHour() >= startTime.getHour()
                     && meal.getDateTime().getHour() <= endTime.getHour()){
-                mealsExcess.add(new UserMealWithExcess(meal.getDateTime(), meal.getDescription(), meal.getCalories(),
+                mealExcess.add(new UserMealWithExcess(meal.getDateTime(), meal.getDescription(), meal.getCalories(),
                         caloriesPerDay < mapCalories.get(meal.getDateTime().getDayOfYear())));
             }
         }
-        return mealsExcess;
+        return mealExcess;
     }
 
     public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime,
