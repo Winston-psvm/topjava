@@ -6,8 +6,7 @@ import ru.javawebinar.topjava.model.UserMealWithExcess;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class UserMealsUtil {
     public static void main(String[] args) {
@@ -27,12 +26,28 @@ public class UserMealsUtil {
 //        System.out.println(filteredByStreams(meals, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000));
     }
 
-    public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
-        // TODO return filtered list with excess. Implement by cycles
-        return null;
+    public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime,
+                                                            LocalTime endTime, int caloriesPerDay) {
+        if (meals.isEmpty()) return null;
+
+        Map<Integer, Integer> mapCalories = new HashMap<>();
+        for (UserMeal meal : meals) {
+            mapCalories.merge(meal.getDateTime().getDayOfYear(),meal.getCalories(),Integer::sum);
+        }
+
+        List<UserMealWithExcess> mealsExcess = new ArrayList<>();
+        for (UserMeal meal : meals) {
+            if (meal.getDateTime().getHour() >= startTime.getHour()
+                    && meal.getDateTime().getHour() <= endTime.getHour()){
+                mealsExcess.add(new UserMealWithExcess(meal.getDateTime(), meal.getDescription(), meal.getCalories(),
+                        caloriesPerDay < mapCalories.get(meal.getDateTime().getDayOfYear())));
+            }
+        }
+        return mealsExcess;
     }
 
-    public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
+    public static List<UserMealWithExcess> filteredByStreams(List<UserMeal> meals, LocalTime startTime,
+                                                             LocalTime endTime, int caloriesPerDay) {
         // TODO Implement by streams
         return null;
     }
