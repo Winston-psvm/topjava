@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class MealServlet  extends HttpServlet {
+public class MealServlet extends HttpServlet {
     private static final Logger log = getLogger(MealServlet.class);
 
     @Override
