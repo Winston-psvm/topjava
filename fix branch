@@ -1,0 +1,437 @@
+[33mcommit 57e7eb30ef5554ba2ee6c71a9a468c4413d9774c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Wed Jun 9 12:19:05 2021 +0300
+
+    fix branch
+
+[33mcommit d85ad1beffe1d5c4f1fdd47130da9612c7d427ef[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Wed Jun 9 12:13:27 2021 +0300
+
+    add servlet meals
+
+[33mcommit a34834a3e9aca720d3647c06a33654b018cb7982[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:37:34 2021 +0300
+
+    1 5 logging
+
+[33mcommit 230921b27b447d12e92086b938f9c6017575b3b6[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:37:22 2021 +0300
+
+    1 1 HW0 streams
+
+[33mcommit 67f7bcd6e7a92834c0134a05d2e3b08a47eff1b4[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:37:17 2021 +0300
+
+    1.0 rename
+
+[33mcommit 5072c78886bbdfadcffb1332cd0a138fed9711fd[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:32:34 2021 +0300
+
+    1 4 forward to redirect
+
+[33mcommit eb2a381ec24528ea80b6df0886bddef459c00f84[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:31:54 2021 +0300
+
+    1 3 add servlet api
+
+[33mcommit 7b4774c27d2911344dd40459ef33710a9322bf27[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:31:13 2021 +0300
+
+    1 2 switch to war
+
+[33mcommit 360358b2eb09f175f6c5ed3a50413d13b074165e[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 8 12:29:32 2021 +0300
+
+    HWO streams patch
+
+[33mcommit c99e1390abaa517692502a372db51a07467a3e7c[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Fri Jun 4 16:00:38 2021 +0300
+
+    HW0 patch
+
+[33mcommit 9f6d09ee1d175591aa7c2f1a2bc1e95c50d6d7f2[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Fri Jun 4 15:57:38 2021 +0300
+
+    HW0 1/2
+
+[33mcommit c1bcb0eb00f7c75b88ed0bcb2a0353a90791e337[m
+Author: winstonsigi <grant5073@gmail.com>
+Date:   Tue Jun 1 15:58:05 2021 +0300
+
+    prepare to HW0 patch
+
+[33mcommit ad6225f2f50a3edbc5eb46f6af969e2995027df4[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 30 10:48:37 2021 +0300
+
+    Update graduation.md
+
+[33mcommit 1dcc68b58d81d385c867835fa28561f72396fbea[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Fri May 28 15:54:28 2021 +0300
+
+    Create README.md
+
+[33mcommit 657ed5fcd836df938c6d540cd7cc919c5e50ece9[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Fri May 28 15:52:56 2021 +0300
+
+    Update README.md
+
+[33mcommit 8c4236cdbaa50c5d397be711be33065c4ee388f7[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 26 17:55:43 2021 +0300
+
+    Update graduation.md
+
+[33mcommit bc6880c6100e3abcc932958ae72717fcf369af90[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 26 13:42:29 2021 +0300
+
+    Update graduation.md
+
+[33mcommit b7f28e7176958c11c1e49680be14559eb8045ed7[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Fri Apr 16 15:10:41 2021 +0300
+
+    Update description.md
+
+[33mcommit 699c90299d78fcbb30ebb65f7ec2712d4925d29d[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sat Apr 10 12:12:14 2021 +0300
+
+    Update cv.md
+
+[33mcommit 1d8f32a0b890d5b7a7c04ed798c10df51841ca9d[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sat Feb 27 21:54:16 2021 +0300
+
+    Update cv.md
+
+[33mcommit fada483294ca81e52c50622b864646106a66d5bd[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sat Feb 27 21:51:50 2021 +0300
+
+    Update cv.md
+
+[33mcommit dc1eed9977324cd4b5f5d066382edc572aa09317[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue Feb 2 20:10:55 2021 +0300
+
+    Update description.md
+
+[33mcommit 86a6795a6e1997d32c972f53b7a7c045ac55f1dc[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue Feb 2 20:06:39 2021 +0300
+
+    Update README.md
+
+[33mcommit d026d2cf746fca5b071f3b54422ffeb46dcb3868[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Fri Jan 29 12:25:27 2021 +0300
+
+    Update README.md
+
+[33mcommit c91877064f1b5b7554849e02d7479cdabac24219[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Jan 28 11:41:19 2021 +0300
+
+    Update README.md
+
+[33mcommit a779519ad62dc8287b7a9296397a3521c453bdf3[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Jan 28 00:30:29 2021 +0300
+
+    Update README.md
+
+[33mcommit 4be539c0796b7cd3028cd2279259e23cb19624aa[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Fri Jan 22 15:40:25 2021 +0300
+
+    Update README.md
+
+[33mcommit 2ec0a12b5ecbbc6191188ae38d2bd42085578b73[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Jan 18 02:10:14 2021 +0300
+
+    Update cv.md
+
+[33mcommit c2344fec7ec9f27edb507ec78aa05cbf912be732[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Jan 18 02:08:41 2021 +0300
+
+    Update cv.md
+
+[33mcommit 22ec347f38fd7416bf974f2c70e957946079e88e[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Jan 18 00:28:34 2021 +0300
+
+    Update ReleaseNotes.md
+
+[33mcommit 5f6d0c40136522bfa67e6b856997f402f295660e[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sat Jan 16 00:31:31 2021 +0300
+
+    Update README.md
+
+[33mcommit 1edcd14a9f5d1c780add0a7f2e56069e711c3b3d[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Dec 21 17:40:10 2020 +0300
+
+    Update cv.md
+
+[33mcommit 52f1f76870923b3715f1d9561547de45bcb1fbdf[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Dec 21 17:32:32 2020 +0300
+
+    Update cv.md
+
+[33mcommit 325763b91c1a02b99061b39ede1085dbffda9d09[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Dec 7 23:33:54 2020 +0300
+
+    Update README.md
+
+[33mcommit bddd4a8dffcca8b081a25862586b6e09e850a8b5[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Nov 23 12:02:40 2020 +0300
+
+    Update cv.md
+
+[33mcommit 91841cb912cc4ff8711016f34a166cfe94789469[m
+Author: admin@javaops.ru <gitlaB13>
+Date:   Thu Oct 29 14:10:49 2020 +0300
+
+    fix grammar
+
+[33mcommit 61cd81364ee3d2247ef9a53958d23d21a8671f6b[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Sep 28 22:50:02 2020 +0300
+
+    Update ReleaseNotes.md
+
+[33mcommit 00424a0eaa980dcfcacc6bc6a9bef81b4472b983[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Sep 28 22:45:15 2020 +0300
+
+    Update ReleaseNotes.md
+
+[33mcommit 9c995f9b94680892e8e805462de14e1797aebc29[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Sep 24 14:26:51 2020 +0300
+
+    Update graduation.md
+
+[33mcommit 7c7e37e548ddc01369ff9448a1a9d390be387141[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Mon Sep 21 17:37:53 2020 +0300
+
+    Update graduation.md
+
+[33mcommit b2b9a19dbf33f24e9a1e532c6d74a498328370e1[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun Sep 20 22:20:46 2020 +0300
+
+    Update README.md
+
+[33mcommit fd2d8522aab499c9aae6d12832b91d8f48bd68cb[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun Sep 20 16:46:23 2020 +0300
+
+    Update graduation.md
+
+[33mcommit f2d884f882826c78d00020049f42a5d81cf1c3ae[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun Sep 20 15:49:23 2020 +0300
+
+    Update graduation.md
+
+[33mcommit 3823848bb585a052d04d6f55c4654e8a6c25b0ea[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun Sep 20 15:47:52 2020 +0300
+
+    Update graduation.md
+
+[33mcommit 64590f1ca576fbc18c743227f61ca33eb21c14f4[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed Jun 17 15:44:52 2020 +0300
+
+    Update graduation.md
+
+[33mcommit 4331b732f57e2bbef144489026f07581d1fa0d6f[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed Jun 17 15:35:54 2020 +0300
+
+    Update graduation.md
+
+[33mcommit 2cf32713038aae3a29ed2bb3f49ce8ca75ac9068[m
+Author: admin@javaops.ru <gitlaB13>
+Date:   Thu Jun 4 18:27:09 2020 +0300
+
+    Update readme
+
+[33mcommit 7664bb38066ab8843696b719a8bdc13a3e138e07[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Jun 4 18:14:35 2020 +0300
+
+    Update README.md
+
+[33mcommit 79efab669a610cb09e16621ff25d9240046911cf[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 31 23:26:28 2020 +0300
+
+    Update README.md
+
+[33mcommit 8f2c0376054663ce5c73dcbb68a7a2d3cdab6298[m
+Author: JavaOPs <admin@javaops.ru>
+Date:   Thu May 28 11:32:08 2020 +0300
+
+    Update graduate
+
+[33mcommit 6464f3cab8aa6fdfd9732d83ee15e972dc9809b7[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 27 16:02:09 2020 +0300
+
+    Update README.md
+
+[33mcommit 7d0145036d3e3e1c69fd053cb6195379aaf9c9ff[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 27 13:45:01 2020 +0300
+
+    Update README.md
+
+[33mcommit c7a9d42c53c720477944de607b83e722ef3fb750[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 24 13:37:51 2020 +0300
+
+    Update graduation.md
+
+[33mcommit 628eb10dea9635fd23acb08b6477f897d14426d8[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 24 13:32:50 2020 +0300
+
+    Update graduation.md
+
+[33mcommit efd86a06ca26f316d5a38a58de6b887789c7cd36[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 24 01:00:39 2020 +0300
+
+    Update README.md
+
+[33mcommit 7eb4a67c93f47950a420d561b7de6956c1a9eb1b[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sat May 23 19:10:30 2020 +0300
+
+    Update README.md
+
+[33mcommit ba240e81eca53c90ca40ec4bfa771393bc8ef71e[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 20 22:16:40 2020 +0300
+
+    Update README.md
+
+[33mcommit 18f0374c537cd28f46b4e1db8f98fc5088f8ac9a[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue May 19 11:47:22 2020 +0300
+
+    Update README.md
+
+[33mcommit 3b91874e6df53a7d7fcebb7efa8fc0bf40ad2be9[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue May 19 11:46:05 2020 +0300
+
+    Update README.md
+
+[33mcommit f0bff4f8b63ab34f44a8997cbbb21fce0583eca0[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue May 19 11:45:35 2020 +0300
+
+    Update README.md
+
+[33mcommit c2180201f5095afdaf632c3e71681acf44d56014[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue May 19 11:43:39 2020 +0300
+
+    Update README.md
+
+[33mcommit 5fe982c3fa982a20b6d31aee74dfc15bfff8ab62[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 17 23:21:23 2020 +0300
+
+    Update README.md
+
+[33mcommit 54f4ec0d6363ef814f3001f831b484dff60f3a7b[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 13 22:05:03 2020 +0300
+
+    Update cv.md
+
+[33mcommit 7c31a8ee0c7a6f87064a23a6d69f8b053a4b1cbf[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 13 22:04:00 2020 +0300
+
+    Update cv.md
+
+[33mcommit 052adf67944cf47671f94293014fbcfce7caa270[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Wed May 13 22:03:35 2020 +0300
+
+    Update cv.md
+
+[33mcommit 3449156db3deb9fb8cb0d4c8d9bd5e8809729304[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 10 23:26:52 2020 +0300
+
+    Update README.md
+
+[33mcommit 2620c6f93e413d51271a5398e8545f3569036638[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Sun May 10 23:16:00 2020 +0300
+
+    Update README.md
+
+[33mcommit bee6ffcbffc764b82c1abd2fb4f6ff1087faa0a1[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Apr 23 14:05:13 2020 +0300
+
+    Update ReleaseNotes.md
+
+[33mcommit 80a3c742a574cfaf871982aeedb95fcd62722f66[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Mar 26 16:02:15 2020 +0300
+
+    Update cv.md
+
+[33mcommit 796d81b362a3e087d016e90e503fe208eb55740b[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Thu Mar 5 23:56:35 2020 +0300
+
+    Update README.md
+
+[33mcommit 572d0459e0c109ad051119757ef65d11b70f6302[m
+Author: Java Online Projects <admin@javaops.ru>
+Date:   Tue Feb 18 11:51:18 2020 +0300
+
+    Update README.md
+
+[33mcommit 62e31a0f6fa449c1ae260f216bfb261fd32827a1[m
+Author: admin@javaops.ru <gitlaB13>
+Date:   Mon Feb 17 23:57:02 2020 +0300
+
+    Update topjava
+
+[33mcommit c145d7d3bcfec7aaecaadb47ec842dd37325902b[m
+Author: Grigory Kislin <javawebinar@yandex.ru>
+Date:   Wed Aug 26 02:11:54 2015 +0300
+
+    Initial
