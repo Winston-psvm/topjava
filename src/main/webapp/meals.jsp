@@ -1,18 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Alex
-  Date: 13.06.2021
-  Time: 17:05
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="ru">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<html>
 <head>
-    <title>Meals</title>
+    <title>Meals, this is fucking meals</title>
 </head>
 <body>
 <h3><a href="index.html">Home</a></h3>
 <hr>
 <h2>Meals</h2>
+<table border="3" cellpadding="20" >
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Calories</th>
+    </tr>
+    </thead>
+    <jsp:useBean id="meals" scope="request" type="java.util.List"/>
+    <c:forEach items="${meals}" var="meal">
+    <tr style="background-color:${meal.excess ? 'red' : 'green'}">
+        <td>${meal.dateTime.toLocalDate()}</td>
+        <td>${meal.description}</td>
+        <td>${meal.calories}</td>
+        </tr>
+        </c:forEach>
+</table>
 </body>
 </html>
