@@ -15,7 +15,7 @@ public class MealRepository implements MealRepositoryInt {
     {
         for (Meal meal : MealsUtil.meals) {
             addAndUpdate(meal);
-        }
+       }
     }
 
     @Override

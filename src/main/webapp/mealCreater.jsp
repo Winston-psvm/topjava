@@ -11,7 +11,7 @@
     <title>Meal</title>
 </head>
 <body>
-<a href="index.html">home</a>
+<a href="index.html">Home</a>
 <hr>
 <h2>${param.action=='creater'? 'Creater meal' : 'Edit meal'}</h2>
 <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
@@ -30,5 +30,7 @@
         <dd><input type="number" value="${meal.calories}" name="calories" required></dd>
     </dl>
 </form>
+<button type="submit">Save</button>
+<button onclick="window.history.back()" type="button">Back</button>
 </body>
 </html>
