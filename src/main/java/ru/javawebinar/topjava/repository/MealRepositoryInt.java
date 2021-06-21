@@ -9,7 +9,7 @@ import java.util.Collections;
 public interface MealRepositoryInt {
     Meal addAndUpdate(Meal meal);
 
-    void deleteById(int id);
+    boolean deleteById(int id);
 
     Collection<Meal> getAll();
 

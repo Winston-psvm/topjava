@@ -25,7 +25,7 @@ public class MealsUtil {
 
     public static void main(String[] args) {}
 
-    public static List<MealTo> sorted(List<Meal> meals, int caloriesPerDay) {
+    public static List<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
         List<MealTo> meal = filteredByStreams(meals, caloriesPerDay);
         return meal.stream().sorted((o1, o2) -> o1.getDateTime().toInstant(ZoneOffset.MAX)
                 .compareTo(o2.getDateTime().toInstant(ZoneOffset.MIN)))
@@ -34,7 +34,7 @@ public class MealsUtil {
     }
 
 
-    public static List<MealTo> filteredByStreams(List<Meal> meals, int caloriesPerDay) {
+    public static List<MealTo> filteredByStreams(Collection<Meal> meals, int caloriesPerDay) {
         Map<LocalDate, Integer> caloriesSumByDate = meals.stream()
                 .collect(
                         Collectors.groupingBy(Meal::getDate, Collectors.summingInt(Meal::getCalories))
@@ -46,6 +46,6 @@ public class MealsUtil {
     }
 
     private static MealTo createTo(Meal meal, boolean excess) {
-        return new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
+        return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
 }

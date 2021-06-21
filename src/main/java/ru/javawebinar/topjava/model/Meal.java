@@ -31,7 +31,7 @@ public class Meal {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.Id = id;
     }
 

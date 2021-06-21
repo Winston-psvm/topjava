@@ -9,6 +9,7 @@
 <h3><a href="index.html">Home</a></h3>
 <hr>
 <h2>Meals</h2>
+<a href="meals?action=create">Add Meal</a>
 <table border="3" cellpadding="20" >
     <thead>
     <tr>
@@ -23,6 +24,8 @@
         <td>${meal.dateTime.toLocalDate()}</td>
         <td>${meal.description}</td>
         <td>${meal.calories}</td>
+        <td><a href="meals?action=update&id=${meal.id}">Update</a> </td>
+        <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
         </tr>
         </c:forEach>
 </table>

@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.util.MealsUtil;
 
 import java.util.Collection;
 import java.util.Map;
@@ -9,7 +10,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealRepository implements MealRepositoryInt {
     private final Map<Integer, Meal> mapDateBase = new ConcurrentHashMap<>();
-    private final AtomicInteger AtomicCount = new AtomicInteger();
+    private final AtomicInteger AtomicCount = new AtomicInteger(0);
+
+    {
+        for (Meal meal : MealsUtil.meals) {
+            addAndUpdate(meal);
+        }
+    }
 
     @Override
     public Meal addAndUpdate(Meal meal) {
@@ -22,8 +29,8 @@ public class MealRepository implements MealRepositoryInt {
     }
 
     @Override
-    public void deleteById(int id) {
-        mapDateBase.remove(id);
+    public boolean deleteById(int id) {
+       return mapDateBase.remove(id) != null;
 
     }
 
