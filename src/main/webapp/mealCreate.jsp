@@ -12,7 +12,7 @@
 </head>
 <body>
 <a href="index.html">Home</a>
-<hr>
+<hr>           <!-- FIXME typo-->
 <h2>${param.action=='creater'? 'Creater meal' : 'Edit meal'}</h2>
 <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
 <form method="post" action="meals">

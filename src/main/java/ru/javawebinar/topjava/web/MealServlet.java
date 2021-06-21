@@ -19,7 +19,7 @@ import java.util.Objects;
 import static org.slf4j.LoggerFactory.getLogger;
 
 public class MealServlet extends HttpServlet {
-      private static final Logger log = getLogger(MealServlet.class);
+      private static final Logger log = getLogger(MealServlet.class); // FIXME not used
       private MealRepositoryInt repository;
 
     @Override
@@ -32,6 +32,7 @@ public class MealServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String id = req.getParameter("id");
 
+        // FIXME may produce NullPointerException
         Meal meal = new Meal(id.isEmpty() ? null : Integer.valueOf(id),
                 LocalDateTime.parse(req.getParameter("dateTime")),
                                 req.getParameter("description"),
@@ -49,18 +50,18 @@ public class MealServlet extends HttpServlet {
         switch (action == null ? "getAll" : action) {
             case "create":
             case "update":
-                Meal meal;
+                Meal meal; // FIXME use DTO
                 if ("create".equals(action)) {
                     meal = new Meal(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 0);
                 } else meal = repository.getById(Integer.parseInt(Objects.requireNonNull(req.getParameter("id"))));
-
+                  // FIXME ot found?
                 req.setAttribute("meal", meal);
                 req.getRequestDispatcher("/mealCreate.jsp").forward(req, resp);
                 break;
 
             case "delete":
                 int id = Integer.parseInt(Objects.requireNonNull(req.getParameter("id")));
-                repository.deleteById(id);
+                repository.deleteById(id); // FIXME not deleted?
                 resp.sendRedirect("meals");
                 break;
 
@@ -70,11 +71,5 @@ public class MealServlet extends HttpServlet {
                 req.getRequestDispatcher("/meals.jsp").forward(req, resp);
                 break;
         }
-
-
-
-
-
     }
-
 }
