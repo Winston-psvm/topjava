@@ -30,7 +30,6 @@ public class MealServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-//        Integer id = Integer.parseInt(req.getParameter("id"));
         String id = req.getParameter("id");
 
         Meal meal = new Meal(id.isEmpty() ? null : Integer.valueOf(id),
@@ -44,9 +43,6 @@ public class MealServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        log.debug("redirect to meals");
-//        req.setAttribute("meals", MealsUtil.sorted(MealsUtil.meals,MealsUtil.CALORIES_PER_DAY));
-//        req.getRequestDispatcher("/meals.jsp").forward(req,resp);
 
         String action = req.getParameter("action");
 
@@ -59,7 +55,7 @@ public class MealServlet extends HttpServlet {
                 } else meal = repository.getById(Integer.parseInt(Objects.requireNonNull(req.getParameter("id"))));
 
                 req.setAttribute("meal", meal);
-                req.getRequestDispatcher("/mealCreater.jsp").forward(req, resp);
+                req.getRequestDispatcher("/mealCreate.jsp").forward(req, resp);
                 break;
 
             case "delete":
