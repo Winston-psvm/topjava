@@ -15,7 +15,7 @@ public class MealsUtil {
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 20, 0), "Ужин", 500),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 0, 0), "Еда на граничное значение", 100),
+            new Meal(LocalDateTime.of(2021, Month.JANUARY, 31, 0, 0), "Еда на граничное значение", 100),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 500),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 410)
@@ -25,15 +25,16 @@ public class MealsUtil {
 
     public static void main(String[] args) {}
 
+    // FIXME why the Meal is sorted and the MealTo is returned? Why the Collection is sorted and the List is returned?
     public static List<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
         List<MealTo> meal = filteredByStreams(meals, caloriesPerDay);
-        return meal.stream().sorted((o1, o2) -> o1.getDateTime().toInstant(ZoneOffset.MAX)
-                .compareTo(o2.getDateTime().toInstant(ZoneOffset.MIN)))
-                .collect(Collectors.toList());
+        return meal.stream().sorted((o1, o2) -> o1.getDateTime().toInstant(ZoneOffset.MAX) // FIXME 1. simplify Comparator
+                .compareTo(o2.getDateTime().toInstant(ZoneOffset.MIN)))                    // FIXME 2. Why use a stream for sorting?
+                .collect(Collectors.toList());                                             // FIXME 3. returns incorrect result
 
     }
 
-
+    // FIXME 1. This method converts Meal to MealTo only; 2. why the Meal is filtered and the MealTo is returned? Why the Collection is filtered and the List is returned?
     public static List<MealTo> filteredByStreams(Collection<Meal> meals, int caloriesPerDay) {
         Map<LocalDate, Integer> caloriesSumByDate = meals.stream()
                 .collect(

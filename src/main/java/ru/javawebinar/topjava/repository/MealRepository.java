@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealRepository implements MealRepositoryInt {
     private final Map<Integer, Meal> mapDateBase = new ConcurrentHashMap<>();
-    private final AtomicInteger AtomicCount = new AtomicInteger(0);
+    private final AtomicInteger AtomicCount = new AtomicInteger(0); // FIXME naming convention violation
 
     {
         for (Meal meal : MealsUtil.meals) {
@@ -19,7 +19,7 @@ public class MealRepository implements MealRepositoryInt {
     }
 
     @Override
-    public Meal addAndUpdate(Meal meal) {
+    public Meal addAndUpdate(Meal meal) {   // FIXME look at Map.merge()
         if (meal.getId() == null) {
             meal.setId(AtomicCount.incrementAndGet());
             mapDateBase.put(meal.getId(),meal);
