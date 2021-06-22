@@ -9,8 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MealRepository implements MealRepositoryInt {
-    private final Map<Integer, Meal> mapDateBase = new ConcurrentHashMap<>();
-    private final AtomicInteger AtomicCount = new AtomicInteger(0); // FIXME naming convention violation
+    private final Map<Integer, Meal> MAP_DATE_BASE = new ConcurrentHashMap<>();
+    private final AtomicInteger ATOMIC_COUNTER = new AtomicInteger(0); // FIXME naming convention violation
 
     {
         for (Meal meal : MealsUtil.meals) {
@@ -21,27 +21,27 @@ public class MealRepository implements MealRepositoryInt {
     @Override
     public Meal addAndUpdate(Meal meal) {   // FIXME look at Map.merge()
         if (meal.getId() == null) {
-            meal.setId(AtomicCount.incrementAndGet());
-            mapDateBase.put(meal.getId(),meal);
+            meal.setId(ATOMIC_COUNTER.incrementAndGet());
+            MAP_DATE_BASE.put(meal.getId(),meal);
             return meal;
         }
-        return mapDateBase.put(meal.getId(), meal);
+        return MAP_DATE_BASE.put(meal.getId(), meal);
     }
 
     @Override
     public boolean deleteById(int id) {
-       return mapDateBase.remove(id) != null;
+       return MAP_DATE_BASE.remove(id) != null;
 
     }
 
     @Override
     public Collection<Meal> getAll() {
-        return mapDateBase.values();
+        return MAP_DATE_BASE.values();
     }
 
     @Override
     public Meal getById(int id) {
-        return mapDateBase.get(id);
+        return MAP_DATE_BASE.get(id);
     }
 
 }

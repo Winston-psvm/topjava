@@ -26,8 +26,8 @@ public class MealsUtil {
     public static void main(String[] args) {}
 
     // FIXME why the Meal is sorted and the MealTo is returned? Why the Collection is sorted and the List is returned?
-    public static List<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
-        List<MealTo> meal = filteredByStreams(meals, caloriesPerDay);
+    public static Collection<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
+        Collection<MealTo> meal = filteredByStreams(meals, caloriesPerDay);
         return meal.stream().sorted((o1, o2) -> o1.getDateTime().toInstant(ZoneOffset.MAX) // FIXME 1. simplify Comparator
                 .compareTo(o2.getDateTime().toInstant(ZoneOffset.MIN)))                    // FIXME 2. Why use a stream for sorting?
                 .collect(Collectors.toList());                                             // FIXME 3. returns incorrect result
@@ -35,7 +35,7 @@ public class MealsUtil {
     }
 
     // FIXME 1. This method converts Meal to MealTo only; 2. why the Meal is filtered and the MealTo is returned? Why the Collection is filtered and the List is returned?
-    public static List<MealTo> filteredByStreams(Collection<Meal> meals, int caloriesPerDay) {
+    public static Collection<MealTo> filteredByStreams(Collection<Meal> meals, int caloriesPerDay) {
         Map<LocalDate, Integer> caloriesSumByDate = meals.stream()
                 .collect(
                         Collectors.groupingBy(Meal::getDate, Collectors.summingInt(Meal::getCalories))

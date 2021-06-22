@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Meal {
-    private Integer Id; // FIXME naming convention violation
+    private Integer id; // FIXME naming convention violation
 
     private final LocalDateTime dateTime;
 
@@ -13,26 +13,24 @@ public class Meal {
 
     private final int calories;
 
-    public Meal(LocalDateTime date, String description, int calories){
-        this.Id = null;                 // FIXME duplicate code
-        this.dateTime = date;            // DRY principle violation
-        this.description = description;   //
-        this.calories = calories;          //
+    public Meal(LocalDateTime dateTime, String description, int calories){
+                                       // FIXME duplicate code//
+        this(null,dateTime,description,calories);
     }
 
     public Meal(Integer mealId, LocalDateTime dateTime, String description, int calories) {
-        this.Id = mealId;
+        this.id = mealId;
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        this.Id = id;
+        this.id = id;
     }
 
     public LocalDateTime getDateTime() {
