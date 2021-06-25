@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Meal {
-    private Integer id; // FIXME naming convention violation
+    private Integer id;
 
     private final LocalDateTime dateTime;
 
@@ -14,7 +14,6 @@ public class Meal {
     private final int calories;
 
     public Meal(LocalDateTime dateTime, String description, int calories){
-                                       // FIXME duplicate code//
         this(null,dateTime,description,calories);
     }
 

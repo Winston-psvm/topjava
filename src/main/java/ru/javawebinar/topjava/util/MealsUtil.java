@@ -25,25 +25,23 @@ public class MealsUtil {
 
     public static void main(String[] args) {}
 
-    // FIXME why the Meal is sorted and the MealTo is returned? Why the Collection is sorted and the List is returned?
-    public static Collection<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
-        Collection<MealTo> meal = filteredByStreams(meals, caloriesPerDay);
-        return meal.stream().sorted((o1, o2) -> o1.getDateTime().toInstant(ZoneOffset.MAX) // FIXME 1. simplify Comparator
-                .compareTo(o2.getDateTime().toInstant(ZoneOffset.MIN)))                    // FIXME 2. Why use a stream for sorting?
-                .collect(Collectors.toList());                                             // FIXME 3. returns incorrect result
-
+    public static List<MealTo> mealToList(Collection<Meal> meals, int caloriesPerDay) {
+        return meals.stream()
+                .map(meal -> createTo(meal, filteredByStreams(meals).get(meal.getDate()) > caloriesPerDay))
+                .collect(Collectors.toList());
     }
 
-    // FIXME 1. This method converts Meal to MealTo only; 2. why the Meal is filtered and the MealTo is returned? Why the Collection is filtered and the List is returned?
-    public static Collection<MealTo> filteredByStreams(Collection<Meal> meals, int caloriesPerDay) {
-        Map<LocalDate, Integer> caloriesSumByDate = meals.stream()
+    public static List<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
+        List<MealTo> list = mealToList(meals, caloriesPerDay);
+        list.sort((o1, o2) -> o2.getDateTime().toLocalDate().compareTo(o1.getDateTime().toLocalDate()));
+        return list;
+    }
+
+    public static Map<LocalDate, Integer> filteredByStreams(Collection<Meal> meals) {
+        return meals.stream()
                 .collect(
                         Collectors.groupingBy(Meal::getDate, Collectors.summingInt(Meal::getCalories))
                 );
-
-        return meals.stream()
-                .map(meal -> createTo(meal, caloriesSumByDate.get(meal.getDate()) > caloriesPerDay))
-                .collect(Collectors.toList());
     }
 
     private static MealTo createTo(Meal meal, boolean excess) {

@@ -3,7 +3,7 @@ package ru.javawebinar.topjava.web;
 import org.slf4j.Logger;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
-import ru.javawebinar.topjava.repository.MealRepositoryInt;
+import ru.javawebinar.topjava.repository.MealRepositoryInterface;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletException;
@@ -19,8 +19,8 @@ import java.util.Objects;
 import static org.slf4j.LoggerFactory.getLogger;
 
 public class MealServlet extends HttpServlet {
-      private static final Logger log = getLogger(MealServlet.class); // FIXME not used
-      private MealRepositoryInt repository;
+      private static final Logger log = getLogger(MealServlet.class);
+      private MealRepositoryInterface repository;
 
     @Override
     public void init() throws ServletException {
@@ -37,7 +37,7 @@ public class MealServlet extends HttpServlet {
                 LocalDateTime.parse(req.getParameter("dateTime")),
                                 req.getParameter("description"),
                                 Integer.parseInt(req.getParameter("calories")));
-        repository.addAndUpdate(meal);
+        repository.save(meal);
         resp.sendRedirect("meals");
 
     }
@@ -60,6 +60,7 @@ public class MealServlet extends HttpServlet {
                 break;
 
             case "delete":
+                log.info("delete");
                 int id = Integer.parseInt(Objects.requireNonNull(req.getParameter("id")));
                 repository.deleteById(id); // FIXME not deleted?
                 resp.sendRedirect("meals");
@@ -67,6 +68,7 @@ public class MealServlet extends HttpServlet {
 
             case "getAll":
             default:
+                log.info("getAll");
                 req.setAttribute("meals", MealsUtil.sorted(repository.getAll(), MealsUtil.CALORIES_PER_DAY));
                 req.getRequestDispatcher("/meals.jsp").forward(req, resp);
                 break;
