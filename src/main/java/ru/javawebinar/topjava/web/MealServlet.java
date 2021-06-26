@@ -2,8 +2,8 @@ package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.repository.InMemoryMealRepository;
 import ru.javawebinar.topjava.repository.MealRepository;
-import ru.javawebinar.topjava.repository.MealRepositoryInterface;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletException;
@@ -20,16 +20,18 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 public class MealServlet extends HttpServlet {
       private static final Logger log = getLogger(MealServlet.class);
-      private MealRepositoryInterface repository;
+      private MealRepository repository;
 
     @Override
     public void init() throws ServletException {
-        repository = new MealRepository();
+        repository = new InMemoryMealRepository();
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        log.info("POST: {}", req);
+
         String id = req.getParameter("id");
 
         // FIXME may produce NullPointerException
@@ -38,13 +40,15 @@ public class MealServlet extends HttpServlet {
                                 req.getParameter("description"),
                                 Integer.parseInt(req.getParameter("calories")));
         repository.save(meal);
+
+        log.debug("Send redirect to /meals");
         resp.sendRedirect("meals");
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        log.info("GET: {}", req);
         String action = req.getParameter("action");
 
         switch (action == null ? "getAll" : action) {
@@ -53,22 +57,23 @@ public class MealServlet extends HttpServlet {
                 Meal meal; // FIXME use DTO
                 if ("create".equals(action)) {
                     meal = new Meal(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 0);
-                } else meal = repository.getById(Integer.parseInt(Objects.requireNonNull(req.getParameter("id"))));
-                  // FIXME ot found?
+                } else {
+                    meal = repository.getById(Integer.parseInt(Objects.requireNonNull(req.getParameter("id")))); // FIXME if not found?
+                }
+                log.debug("Forward to /mealCreate.jsp");
+
                 req.setAttribute("meal", meal);
                 req.getRequestDispatcher("/mealCreate.jsp").forward(req, resp);
                 break;
 
             case "delete":
-                log.info("delete");
                 int id = Integer.parseInt(Objects.requireNonNull(req.getParameter("id")));
-                repository.deleteById(id); // FIXME not deleted?
+                repository.deleteById(id); // FIXME if not deleted?
                 resp.sendRedirect("meals");
                 break;
 
             case "getAll":
             default:
-                log.info("getAll");
                 req.setAttribute("meals", MealsUtil.sorted(repository.getAll(), MealsUtil.CALORIES_PER_DAY));
                 req.getRequestDispatcher("/meals.jsp").forward(req, resp);
                 break;
