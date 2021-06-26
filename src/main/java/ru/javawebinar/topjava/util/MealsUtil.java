@@ -52,4 +52,9 @@ public class MealsUtil {
     private static MealTo createTo(Meal meal, boolean excess) {
         return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
+
+    public static List<MealTo> getFilteredTOs(List<Meal> meals) {
+        // TODO
+        return null;
+    }
 }

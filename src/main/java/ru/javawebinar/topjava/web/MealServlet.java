@@ -74,7 +74,7 @@ public class MealServlet extends HttpServlet {
 
             case "getAll":
             default:
-                req.setAttribute("meals", MealsUtil.sorted(repository.getAll(), MealsUtil.CALORIES_PER_DAY));
+                req.setAttribute("meals", MealsUtil.getFilteredTOs(repository.getAll()));
                 req.getRequestDispatcher("/meals.jsp").forward(req, resp);
                 break;
         }
