@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.web;
 
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.slf4j.Logger;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MealTo;
@@ -57,12 +58,13 @@ public class MealServlet extends HttpServlet {
             case "update":
                 MealTo mealTo;
                 if ("create".equals(action)) {
-                    mealTo = new MealTo(null, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 0,false);
+                    mealTo = new MealTo(null, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 0, false);
                 } else {
-                    Meal meal =
-                            repository.getById(Integer.parseInt(Objects.requireNonNull(req.getParameter("id"))));
-                    mealTo = MealsUtil.createTo(meal,false);
-                    // FIXME if not found?
+                    Meal meal = repository.getById(Integer.parseInt(Objects.requireNonNull(req.getParameter("id"))));
+                    if (meal == null) {
+                        log.info("meal not found, start create new MealTo");
+                        mealTo = new MealTo(null, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "", 0, false);
+                    } else mealTo = MealsUtil.createTo(meal, false);
                 }
                 log.debug("Forward to /mealCreate.jsp");
 
@@ -73,7 +75,8 @@ public class MealServlet extends HttpServlet {
             case "delete":
                 log.info("delete");
                 int id = Integer.parseInt(Objects.requireNonNull(req.getParameter("id")));
-                repository.deleteById(id); // FIXME not deleted?
+                if (repository.deleteById(id)) log.info("Not deleted" + id);
+                else log.info(id + "was deleted");
                 resp.sendRedirect("meals");
                 break;
 
