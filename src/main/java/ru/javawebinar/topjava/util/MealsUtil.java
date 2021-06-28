@@ -25,18 +25,23 @@ public class MealsUtil {
 
     public static void main(String[] args) {}
 
+    // FIXME evaluate the complexity of this algorithm. Reduce to O(n)
     public static List<MealTo> mealToList(Collection<Meal> meals, int caloriesPerDay) {
         return meals.stream()
                 .map(meal -> createTo(meal, filteredByStreams(meals).get(meal.getDate()) > caloriesPerDay))
                 .collect(Collectors.toList());
     }
 
+    // FIXME why the Meal is sorted and the MealTo is returned?
+    //  Why the Collection is sorted and the List is returned?
+    //  Why does the sort modify the data?
     public static List<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
         List<MealTo> list = mealToList(meals, caloriesPerDay);
-        list.sort((o1, o2) -> o2.getDateTime().toLocalDate().compareTo(o1.getDateTime().toLocalDate()));
+        list.sort(Comparator.comparing(MealTo::getDateTime).reversed());
         return list;
     }
 
+    // FIXME This method collects, but doesn't filter
     public static Map<LocalDate, Integer> filteredByStreams(Collection<Meal> meals) {
         return meals.stream()
                 .collect(
@@ -46,5 +51,10 @@ public class MealsUtil {
 
     private static MealTo createTo(Meal meal, boolean excess) {
         return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
+    }
+
+    public static List<MealTo> getFilteredTOs(List<Meal> meals) {
+        // TODO
+        return null;
     }
 }

@@ -30,7 +30,7 @@ public class MealServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String id = Objects.requireNonNull(req.getParameter("id"));
+        String id = req.getParameter("id");
 
         // FIXME may produce NullPointerException
         Meal meal = new Meal(id.isEmpty() ? null : Integer.valueOf(id),
