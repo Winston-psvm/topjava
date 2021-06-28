@@ -21,7 +21,7 @@
     <jsp:useBean id="meals" scope="request" type="java.util.List"/>
     <c:forEach items="${meals}" var="meal">
     <tr style="background-color:${meal.excess ? 'red' : 'green'}">
-        <td>${meal.dateTime.toLocalDate()}</td> <!-- FIXME Where is time? -->
+        <td>${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}</td>
         <td>${meal.description}</td>
         <td>${meal.calories}</td>
         <td><a href="meals?action=update&id=${meal.id}">Update</a> </td>

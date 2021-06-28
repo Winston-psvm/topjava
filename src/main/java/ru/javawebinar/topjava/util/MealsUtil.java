@@ -6,7 +6,6 @@ import ru.javawebinar.topjava.model.MealTo;
 import java.time.*;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.Collections.reverseOrder;
 
@@ -25,36 +24,30 @@ public class MealsUtil {
 
     public static void main(String[] args) {}
 
-    // FIXME evaluate the complexity of this algorithm. Reduce to O(n)
-    public static List<MealTo> mealToList(Collection<Meal> meals, int caloriesPerDay) {
+
+    public static List<MealTo> filterMealList(List<Meal> meals, int caloriesPerDay) {
+        Map<LocalDate, Integer> mapMeals = packMeal(meals);
         return meals.stream()
-                .map(meal -> createTo(meal, filteredByStreams(meals).get(meal.getDate()) > caloriesPerDay))
+                .map(meal -> createTo(meal, mapMeals.get(meal.getDate()) > caloriesPerDay))
                 .collect(Collectors.toList());
     }
 
-    // FIXME why the Meal is sorted and the MealTo is returned?
-    //  Why the Collection is sorted and the List is returned?
-    //  Why does the sort modify the data?
-    public static List<MealTo> sorted(Collection<Meal> meals, int caloriesPerDay) {
-        List<MealTo> list = mealToList(meals, caloriesPerDay);
+    public static List<MealTo> getFilteredTOs(List<Meal> meals, int caloriesPerDay) {
+        List<MealTo> list = filterMealList(meals, caloriesPerDay);
         list.sort(Comparator.comparing(MealTo::getDateTime).reversed());
         return list;
     }
 
-    // FIXME This method collects, but doesn't filter
-    public static Map<LocalDate, Integer> filteredByStreams(Collection<Meal> meals) {
+
+    public static Map<LocalDate, Integer> packMeal(List<Meal> meals) {
         return meals.stream()
                 .collect(
                         Collectors.groupingBy(Meal::getDate, Collectors.summingInt(Meal::getCalories))
                 );
     }
 
-    private static MealTo createTo(Meal meal, boolean excess) {
+    public static MealTo createTo(Meal meal, boolean excess) {
         return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
 
-    public static List<MealTo> getFilteredTOs(List<Meal> meals) {
-        // TODO
-        return null;
-    }
 }

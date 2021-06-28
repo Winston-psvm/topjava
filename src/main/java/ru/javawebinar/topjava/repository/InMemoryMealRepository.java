@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class InMemoryMealRepository implements MealRepository {
     private final Map<Integer, Meal> mapDateBase = new ConcurrentHashMap<>();
 
-    private final AtomicInteger atomicCounter = new AtomicInteger(0); // TODO learn more about naming convention
+    private final AtomicInteger atomicCounter = new AtomicInteger(0);
 
     {
         for (Meal meal : MealsUtil.meals) {
@@ -24,9 +24,11 @@ public class InMemoryMealRepository implements MealRepository {
     public Meal save(Meal meal) {
         if (meal.getId() == null) {
             meal.setId(atomicCounter.incrementAndGet());
+            mapDateBase.put(meal.getId(), meal);
+            return meal;
         }
-        mapDateBase.merge(meal.getId(), meal, ((meal1, meal2) -> meal2)); // TODO learn more about Map#merge
-        return meal;
+        Meal mealSearch = mapDateBase.get(meal.getId());
+        return mapDateBase.merge(meal.getId(),mealSearch,((a,b) -> b = meal));
     }
 
     @Override
