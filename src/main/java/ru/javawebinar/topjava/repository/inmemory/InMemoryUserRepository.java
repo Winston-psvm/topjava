@@ -41,11 +41,14 @@ public class InMemoryUserRepository implements UserRepository {
     }
 
     @Override
-    public Collection<User> getAll() {
+    public List<User> getAll() {
         log.info("getAll");
-        return repository.values();
+        List<User> users = new ArrayList<>(repository.values());
+        users.sort(Comparator.comparing(User::getName));
+        return users;
     }
 
+//getByEmail попробовать ерез стримы, getAll не обязательно
     @Override
     public User getByEmail(String email) {
         log.info("getByEmail {}", email);
