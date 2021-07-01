@@ -4,10 +4,9 @@ import org.slf4j.Logger;
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
-import ru.javawebinar.topjava.to.MealTo;
 import ru.javawebinar.topjava.util.DateTimeUtil;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.concurrent.ConcurrentHashMap;
@@ -24,7 +23,7 @@ public class InMemoryMealRepository implements MealRepository {
 
 
     {
-//        MealsUtil.meals.forEach(this::save);
+//     MealsUtil.meals.forEach(this::save);
     }
 
     @Override
@@ -54,30 +53,26 @@ public class InMemoryMealRepository implements MealRepository {
         return repository == null ? null : repository.get(id);
     }
 
-//    Фильтрацию по датам сделать в репозитории т.к.
-//    из базы будем брать сразу отфильтрованные по дням записи.
-//    Следите чтобы первый и последний день не были обрезаны,
-//    иначе сумма калорий будет неверная.
     @Override
     public List<Meal> getAll(Integer userId) {
         log.info("getAll");
-        Map<Integer, Meal> repository = mealsBase.get(userId);
-        if (repository.values().isEmpty()) return Collections.emptyList();
-
-        List<Meal> meals = new ArrayList<>(repository.values());
-        meals.sort(Comparator.comparing(Meal::getDateTime).reversed());
-        return filterPredicate(meals, meal -> true);
+        return filterPredicate(userId, meal -> true);
     }
 
-//    public static List<MealTo> getFilterTos(List<Meal> meals,
-//                                            LocalTime startTime, LocalTime endTime) {
-//        return filterPredicate(meals,
-//                meal -> DateTimeUtil.isBetweenHalfOpen(Meal::getTime, startTime, endTime));
-//    }
+    @Override
+    public List<Meal> getFilterMeal(LocalDate startDate, LocalDate endDate, Integer userId) {
+        return filterPredicate(userId,meal ->
+                DateTimeUtil.isBetweenHalfOpenDate(meal.getDateTime().toLocalDate(),
+                        startDate, endDate));
+    }
 
-    private static List<Meal> filterPredicate(List<Meal> meals, Predicate<Meal> filter){
-        return meals.stream()
+    private List<Meal> filterPredicate(Integer userId, Predicate<Meal> filter){
+        Map<Integer, Meal> repository = mealsBase.get(userId);
+        if (repository == null || repository.values().isEmpty()) return Collections.emptyList();
+
+        return repository.values().stream()
                 .filter(filter)
+                .sorted(Comparator.comparing(Meal::getDateTime).reversed())
                 .collect(Collectors.toList());
     }
 }
