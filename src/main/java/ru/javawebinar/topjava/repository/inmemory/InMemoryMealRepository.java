@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.DateTimeUtil;
+import ru.javawebinar.topjava.util.MealsUtil;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -23,7 +24,7 @@ public class InMemoryMealRepository implements MealRepository {
 
 
     {
-//     MealsUtil.meals.forEach(this::save);
+        MealsUtil.meals.forEach(meal -> save(1, meal));
     }
 
     @Override
