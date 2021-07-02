@@ -18,7 +18,7 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 
 @Controller
 public class MealRestController {
-    private final Integer MOK_USER_ID = SecurityUtil.authUserId();
+    private final Integer mokUserId = SecurityUtil.authUserId();
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     private final MealService service;
@@ -29,35 +29,35 @@ public class MealRestController {
 
     public List<MealTo> getAll() {
         log.info("getAll");
-        return MealsUtil.getTos(service.getAll(MOK_USER_ID), SecurityUtil.authUserCaloriesPerDay());
+        return MealsUtil.getTos(service.getAll(mokUserId), SecurityUtil.authUserCaloriesPerDay());
     }
 
     public Meal get(int id) {
         log.info("get {}", id);
-        return service.get(id, MOK_USER_ID);
+        return service.get(id, mokUserId);
     }
 
     public Meal create(Meal meal) {
         log.info("create {}", meal);
         checkNew(meal);
-        return service.create(MOK_USER_ID, meal);
+        return service.create(mokUserId, meal);
     }
 
     public void delete(int id) {
         log.info("delete {}", id);
-        service.delete(id, MOK_USER_ID);
+        service.delete(id, mokUserId);
     }
 
     public void update(Meal meal, int id) {
         log.info("update {} with id={}", meal, id);
         assureIdConsistent(meal, id);
-        service.update(MOK_USER_ID, meal);
+        service.update(mokUserId, meal);
     }
 
     public List<MealTo> getFilterMealTos(LocalTime startTime, LocalTime endTime,
                                          LocalDate startDate, LocalDate endDate){
         log.info("getFilterMealTos");
-        return MealsUtil.getFilteredTos(service.getFilterMeal(startDate, endDate, MOK_USER_ID),
+        return MealsUtil.getFilteredTos(service.getFilterMeal(startDate, endDate, mokUserId),
                 SecurityUtil.authUserCaloriesPerDay(),startTime,endTime);
         }
 
