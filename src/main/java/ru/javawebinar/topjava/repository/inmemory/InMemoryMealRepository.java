@@ -23,7 +23,7 @@ public class InMemoryMealRepository implements MealRepository {
       private static final Logger log = getLogger(InMemoryMealRepository.class);
 
 
-    {
+    {                                   // FIXME magic number
         MealsUtil.meals.forEach(meal -> save(1, meal));
     }
 

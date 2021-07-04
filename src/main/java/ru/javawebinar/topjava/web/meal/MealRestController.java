@@ -18,7 +18,7 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 
 @Controller
 public class MealRestController {
-    private final Integer mokUserId = SecurityUtil.authUserId();
+    private final Integer mokUserId = SecurityUtil.authUserId(); // FIXME typo
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     private final MealService service;
