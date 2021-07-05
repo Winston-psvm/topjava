@@ -1,19 +1,15 @@
 package ru.javawebinar.topjava.util;
 
-import java.time.LocalDate;
+import org.springframework.lang.Nullable;
+
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtil {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    // FIXME duplicate code. Please, use generic
-    public static boolean isBetweenHalfOpen(LocalTime lt, LocalTime startTime, LocalTime endTime) {
-        return lt.compareTo(startTime) >= 0 && lt.compareTo(endTime) < 0;
-    }
 
-    public static boolean isBetweenHalfOpenDate(LocalDate lt, LocalDate startDate, LocalDate endDate) {
-        return lt.compareTo(startDate) >= 0 && lt.compareTo(endDate) < 0;
+    public static <T extends Comparable<T>> boolean isBetweenHalfOpen(T lt, @Nullable T start,@Nullable T end){
+        return (start == null || lt.compareTo(start) >= 0) && (end == null || lt.compareTo(end) < 0);
     }
 
     public static String toString(LocalDateTime ldt) {

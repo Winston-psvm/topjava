@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.service;
 
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
@@ -35,7 +36,7 @@ public class MealService {
         return repository.getAll(userId);
     }
 
-    public List<Meal> getFilterMeal(LocalDate startDate, LocalDate endDate, Integer userId){
+    public List<Meal> getFilterMeal(@Nullable LocalDate startDate,@Nullable LocalDate endDate, Integer userId){
         return repository.getFilterMeal(startDate, endDate, userId);
     }
 

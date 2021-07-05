@@ -34,9 +34,6 @@ public class MealServlet extends HttpServlet {
     public void destroy() {
         springContext.close();
     }
-//    8: добавить выбор текущего залогиненного пользователя (имитация аутентификации,
-//    сделать Select с двумя элементами со значениями 1 и 2 в index.html и SecurityUtil.setAuthUserId(userId) в UserServlet).
-//    От выбора user или admin будет зависеть отображение еды: user-а или admin-а. Настоящая аутентификация будет через Spring Security позже.
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -78,10 +75,23 @@ public class MealServlet extends HttpServlet {
                 request.getRequestDispatcher("/mealForm.jsp").forward(request, response);
                 break;
             case "filter":
-                LocalDate startDate = LocalDate.parse(request.getParameter("startDate"));
-                LocalDate endDate = LocalDate.parse(request.getParameter("endDate"));
-                LocalTime startTime = LocalTime.parse(request.getParameter("startTime"));
-                LocalTime endTime = LocalTime.parse(request.getParameter("endTime"));
+                LocalDate startDate;
+                LocalDate endDate;
+                LocalTime startTime;
+                LocalTime endTime;
+
+                if (request.getParameter("startDate").equals("")) startDate = null;
+                else startDate = LocalDate.parse(request.getParameter("startDate"));
+
+                if (request.getParameter("endDate").equals("")) endDate = null;
+                else endDate = LocalDate.parse(request.getParameter("endDate"));
+
+                if (request.getParameter("startTime").equals("")) startTime = null;
+                else startTime = LocalTime.parse(request.getParameter("startTime"));
+
+                if (request.getParameter("endTime").equals("")) endTime = null;
+                else endTime = LocalTime.parse(request.getParameter("endTime"));
+
                 request.setAttribute("meals", controller.getFilterMealTos(startTime, endTime, startDate, endDate));
                 request.getRequestDispatcher("/meals.jsp").forward(request, response);
                 break;

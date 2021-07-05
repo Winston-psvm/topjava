@@ -26,19 +26,19 @@
             <input type="hidden" name="action" value="filter">
             <dl>
                 <dt>Start Date:</dt>
-                <dd><input type="date" value="${param.startDate}" name="startDate" required></dd>
+                <dd><input  type="date" value="${param.startDate}" name="startDate"></dd>
             </dl>
             <dl>
                 <dt>End Date:</dt>
-                <dd><input type="date" value="${param.endDate}" name="endDate" required></dd>
+                <dd><input type="date" value="${param.endDate}" name="endDate"></dd>
             </dl>
             <dl>
                 <dt>Start Time:</dt>
-                <dd><input type="time" value="${param.startTime}" name="startTime" required></dd>
+                <dd><input type="time" value="${param.startTime}" name="startTime"></dd>
             </dl>
             <dl>
                 <dt>End Time:</dt>
-                <dd><input type="time" value="${param.endTime}" name="endTime" required></dd>
+                <dd><input type="time" value="${param.endTime}" name="endTime"></dd>
             </dl>
             <button type="submit">Save</button>
             <button onclick="window.history.back()" type="button">Back</button>

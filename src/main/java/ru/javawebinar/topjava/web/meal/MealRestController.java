@@ -2,6 +2,7 @@ package ru.javawebinar.topjava.web.meal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.to.MealTo;
@@ -18,46 +19,45 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 
 @Controller
 public class MealRestController {
-    private final Integer mokUserId = SecurityUtil.authUserId(); // FIXME typo
+    private final Integer mockUserId = SecurityUtil.authUserId();
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     private final MealService service;
-
     public MealRestController(MealService service) {
         this.service = service;
     }
 
     public List<MealTo> getAll() {
         log.info("getAll");
-        return MealsUtil.getTos(service.getAll(mokUserId), SecurityUtil.authUserCaloriesPerDay());
+        return MealsUtil.getTos(service.getAll(mockUserId), SecurityUtil.authUserCaloriesPerDay());
     }
 
     public Meal get(int id) {
         log.info("get {}", id);
-        return service.get(id, mokUserId);
+        return service.get(id, mockUserId);
     }
 
     public Meal create(Meal meal) {
         log.info("create {}", meal);
         checkNew(meal);
-        return service.create(mokUserId, meal);
+        return service.create(mockUserId, meal);
     }
 
     public void delete(int id) {
         log.info("delete {}", id);
-        service.delete(id, mokUserId);
+        service.delete(id, mockUserId);
     }
 
     public void update(Meal meal, int id) {
         log.info("update {} with id={}", meal, id);
         assureIdConsistent(meal, id);
-        service.update(mokUserId, meal);
+        service.update(mockUserId, meal);
     }
 
-    public List<MealTo> getFilterMealTos(LocalTime startTime, LocalTime endTime,
-                                         LocalDate startDate, LocalDate endDate){
+    public List<MealTo> getFilterMealTos(@Nullable LocalTime startTime, @Nullable LocalTime endTime,
+                                         @Nullable LocalDate startDate, @Nullable LocalDate endDate){
         log.info("getFilterMealTos");
-        return MealsUtil.getFilteredTos(service.getFilterMeal(startDate, endDate, mokUserId),
+        return MealsUtil.getFilteredTos(service.getFilterMeal(startDate, endDate, mockUserId),
                 SecurityUtil.authUserCaloriesPerDay(),startTime,endTime);
         }
 

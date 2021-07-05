@@ -6,6 +6,7 @@ import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.DateTimeUtil;
 import ru.javawebinar.topjava.util.MealsUtil;
+import ru.javawebinar.topjava.web.SecurityUtil;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -23,8 +24,8 @@ public class InMemoryMealRepository implements MealRepository {
       private static final Logger log = getLogger(InMemoryMealRepository.class);
 
 
-    {                                   // FIXME magic number
-        MealsUtil.meals.forEach(meal -> save(1, meal));
+    {
+        MealsUtil.meals.forEach(meal -> save(SecurityUtil.MOCK_USER_ID, meal));
     }
 
     @Override
@@ -63,7 +64,7 @@ public class InMemoryMealRepository implements MealRepository {
     @Override
     public List<Meal> getFilterMeal(LocalDate startDate, LocalDate endDate, Integer userId) {
         return filterPredicate(userId,meal ->
-                DateTimeUtil.isBetweenHalfOpenDate(meal.getDateTime().toLocalDate(),
+                DateTimeUtil.isBetweenHalfOpen(meal.getDateTime().toLocalDate(),
                         startDate, endDate));
     }
 
