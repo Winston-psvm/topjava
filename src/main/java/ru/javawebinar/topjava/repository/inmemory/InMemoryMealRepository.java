@@ -65,7 +65,7 @@ public class InMemoryMealRepository implements MealRepository {
     public List<Meal> getFilterMeal(LocalDate startDate, LocalDate endDate, Integer userId) {
         return filterPredicate(userId,meal ->
                 DateTimeUtil.isBetweenHalfOpen(meal.getDateTime().toLocalDate(),
-                        startDate, endDate));
+                        DateTimeUtil.refactorStartDate(startDate), DateTimeUtil.refactorEndDate(endDate)));
     }
 
     private List<Meal> filterPredicate(Integer userId, Predicate<Meal> filter){

@@ -16,10 +16,10 @@ import java.util.List;
 
 import static ru.javawebinar.topjava.util.ValidationUtil.assureIdConsistent;
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
+import static ru.javawebinar.topjava.web.SecurityUtil.userId;
 
 @Controller
 public class MealRestController {
-    private final Integer mockUserId = SecurityUtil.authUserId();
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     private final MealService service;
@@ -29,35 +29,35 @@ public class MealRestController {
 
     public List<MealTo> getAll() {
         log.info("getAll");
-        return MealsUtil.getTos(service.getAll(mockUserId), SecurityUtil.authUserCaloriesPerDay());
+        return MealsUtil.getTos(service.getAll(userId), SecurityUtil.authUserCaloriesPerDay());
     }
 
     public Meal get(int id) {
         log.info("get {}", id);
-        return service.get(id, mockUserId);
+        return service.get(id, userId);
     }
 
     public Meal create(Meal meal) {
         log.info("create {}", meal);
         checkNew(meal);
-        return service.create(mockUserId, meal);
+        return service.create(userId, meal);
     }
 
     public void delete(int id) {
         log.info("delete {}", id);
-        service.delete(id, mockUserId);
+        service.delete(id, userId);
     }
 
     public void update(Meal meal, int id) {
         log.info("update {} with id={}", meal, id);
         assureIdConsistent(meal, id);
-        service.update(mockUserId, meal);
+        service.update(userId, meal);
     }
 
     public List<MealTo> getFilterMealTos(@Nullable LocalTime startTime, @Nullable LocalTime endTime,
                                          @Nullable LocalDate startDate, @Nullable LocalDate endDate){
         log.info("getFilterMealTos");
-        return MealsUtil.getFilteredTos(service.getFilterMeal(startDate, endDate, mockUserId),
+        return MealsUtil.getFilteredTos(service.getFilterMeal(startDate, endDate, userId),
                 SecurityUtil.authUserCaloriesPerDay(),startTime,endTime);
         }
 

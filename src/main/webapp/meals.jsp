@@ -41,7 +41,7 @@
                 <dd><input type="time" value="${param.endTime}" name="endTime"></dd>
             </dl>
             <button type="submit">Save</button>
-            <button onclick="window.history.back()" type="button">Back</button>
+<%--            <button onclick="window.history.back()" type="button">Back</button>--%>
         </form>
     </section>
     <a href="meals?action=create">Add Meal</a>
