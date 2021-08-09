@@ -3,7 +3,7 @@ package ru.javawebinar.topjava.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Size; // FIXME: 09.08.2021 unused import)))))))))))00)))0)0
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -24,6 +24,7 @@ public class Meal extends AbstractBaseEntity {
     public static final String DELETE = "Meal.delete";
 
 
+    // FIXME: 09.08.2021 cannot create meal for the admin with same date as one of user's meal (for table generation via Hibernate)
     @Column(name = "date_time", nullable = false, unique = true)
     @NotNull
     private LocalDateTime dateTime;
@@ -32,7 +33,7 @@ public class Meal extends AbstractBaseEntity {
     @NotBlank
     private String description;
 
-    @Column(name = "calories", nullable = false)
+    @Column(name = "calories", nullable = false) // FIXME: 09.08.2021 validation
     private int calories;
 
     @ManyToOne(fetch = FetchType.LAZY)
