@@ -45,7 +45,7 @@ public class JpaMealRepository implements MealRepository {
     }
 
     @Override
-    public List<Meal> getAll(int userId) {
+    public List<Meal> getAll(int userId) { // FIXME: 09.08.2021 duplicate code
         return em.createNamedQuery(Meal.GET_ALL, Meal.class)
                 .setParameter("user_id", userId)
                 .getResultList();
