@@ -1,7 +1,7 @@
 package ru.javawebinar.topjava.service;
 
-import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Stopwatch;
@@ -116,6 +116,7 @@ public class MealServiceTest { // FIXME: 09.08.2021 tests fail
     public void updateNotOwn() {
         assertThrows(NotFoundException.class, () -> service.update(meal1, ADMIN_ID));
         MATCHER.assertMatch(service.get(MEAL1_ID, USER_ID), meal1);
+
     }
 
     @Test
