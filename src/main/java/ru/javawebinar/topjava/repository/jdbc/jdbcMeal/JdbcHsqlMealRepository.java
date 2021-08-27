@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 
 @Repository
 @Profile(Profiles.HSQL_DB)
-public class JdbcHsqlMealRepository extends AbstractJdbcMealRepository{
+public class JdbcHsqlMealRepository extends AbstractJdbcMealRepository<Timestamp> {
     @Override
-    public Object timeConvector(LocalDateTime localDateTime) {
+    public Timestamp timeConvector(LocalDateTime localDateTime) {
         return Timestamp.valueOf(localDateTime);
     }
 
