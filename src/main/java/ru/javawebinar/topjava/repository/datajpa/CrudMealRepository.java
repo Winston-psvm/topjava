@@ -9,9 +9,9 @@ import ru.javawebinar.topjava.model.Meal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Transactional(readOnly = true)
 public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Transactional
-    @Modifying
     int deleteByIdAndUserId(int id, int userId);
 
     Meal findMealsByIdAndUserId(int id, int userId);
@@ -20,6 +20,6 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
 
     List<Meal> findAllByUserIdAndDateTimeGreaterThanEqualAndDateTimeLessThanOrderByDateTimeDesc(int user, LocalDateTime start, LocalDateTime end);
 
-    @Query("SELECT m from Meal m JOIN FETCH m.user WHERE m.id =?1 AND m.user.id=?2")
+    @Query("SELECT m FROM Meal m JOIN FETCH m.user WHERE m.id = ?1 AND m.user.id = ?2")
     Meal getWithUser(int id, int userId);
 }
