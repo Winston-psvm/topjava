@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 
 @Repository
 @Profile(Profiles.POSTGRES_DB)
-public class JdbcPostgresMealRepository extends AbstractJdbcMealRepository{
+public class JdbcPostgresMealRepository extends AbstractJdbcMealRepository<LocalDateTime> {
     @Override
-    public Object timeConvector(LocalDateTime localDateTime) {
+    public LocalDateTime timeConvector(LocalDateTime localDateTime) {
         return localDateTime;
     }
 

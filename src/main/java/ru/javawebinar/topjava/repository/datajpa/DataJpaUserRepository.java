@@ -19,7 +19,6 @@ public class DataJpaUserRepository implements UserRepository {
     }
 
     @Override
-    @Transactional
     public User save(User user) {
         return crudRepository.save(user);
     }

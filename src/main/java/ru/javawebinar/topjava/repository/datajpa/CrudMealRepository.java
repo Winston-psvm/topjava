@@ -11,7 +11,14 @@ import java.util.List;
 
 @Transactional(readOnly = true)
 public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
+
+    @Override
     @Transactional
+    @Modifying
+    <S extends Meal> S save(S s);
+
+    @Transactional
+    @Modifying
     int deleteByIdAndUserId(int id, int userId);
 
     Meal findMealsByIdAndUserId(int id, int userId);
