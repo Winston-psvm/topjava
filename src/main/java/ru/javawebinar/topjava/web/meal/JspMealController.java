@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
+
+import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalDate;
+import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalTime;
 
 @Controller
 @RequestMapping("/meals")
@@ -23,23 +27,26 @@ public class JspMealController extends AbstractMealController {
         Meal meal = new Meal(
                 LocalDateTime.parse(request.getParameter("dateTime")),
                 request.getParameter("description"),
-                Integer.parseInt(request.getParameter("calories"))
-        );
+                Integer.parseInt(request.getParameter("calories")));
+
         if (request.getParameter("id").isEmpty()) {
             super.create(meal);
-        } else super.update(meal, getId(request));
-        return "redirect:meals";
+        } else {
+            super.update(meal, getId(request));
+        }
+        return "redirect:/meals";
     }
 
     @GetMapping("/delete")
     public String delete(HttpServletRequest request) {
         super.delete(getId(request));
-        return "redirect:meals";
+        return "redirect:/meals";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("meal" , new Meal(LocalDateTime.now(), "что кушал?", 1));
+        model.addAttribute("meal" , new Meal(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS),
+                                    "что кушал?", 1));
         return "mealForm";
     }
 
@@ -51,11 +58,11 @@ public class JspMealController extends AbstractMealController {
 
     @GetMapping("/filter")
     public String getBetween(Model model, HttpServletRequest request) {
-        model.addAttribute("meal", super.getBetween(
-                LocalDate.parse(request.getParameter("startDate")),
-                LocalTime.parse(request.getParameter("startTime")),
-                LocalDate.parse(request.getParameter("endDate")),
-                LocalTime.parse(request.getParameter("endTime"))));
+        LocalDate startDate = parseLocalDate(request.getParameter("startDate"));
+        LocalDate endDate = parseLocalDate(request.getParameter("endDate"));
+        LocalTime startTime = parseLocalTime(request.getParameter("startTime"));
+        LocalTime endTime = parseLocalTime(request.getParameter("endTime"));
+        model.addAttribute("meals", super.getBetween(startDate, startTime, endDate, endTime));
         return "meals";
     }
 

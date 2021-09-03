@@ -19,7 +19,7 @@ public class RootController {
     @Autowired
     private MealService mealService;
 
-    @GetMapping("/ ")
+    @GetMapping("/")
     public String root() {
         return "index";
     }
