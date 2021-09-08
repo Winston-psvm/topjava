@@ -28,8 +28,8 @@ import static ru.javawebinar.topjava.util.ValidationUtil.getRootCause;
 @ActiveProfiles(resolver = ActiveDbProfileResolver.class)
 public abstract class AbstractServiceTest {
 
-    @Autowired
-    Environment env;
+//    @Autowired
+//    Environment env;
 
     @ClassRule
     public static ExternalResource summary = TimingRules.SUMMARY;
@@ -37,9 +37,9 @@ public abstract class AbstractServiceTest {
     @Rule
     public Stopwatch stopwatch = TimingRules.STOPWATCH;
 
-    public boolean isJpa(){
-        return env.acceptsProfiles(Profiles.of(ru.javawebinar.topjava.Profiles.DATAJPA, ru.javawebinar.topjava.Profiles.JPA));
-    }
+//    public boolean isJpa(){
+//        return env.acceptsProfiles(Profiles.of(ru.javawebinar.topjava.Profiles.DATAJPA, ru.javawebinar.topjava.Profiles.JPA));
+//    }
 
     //  Check root cause in JUnit: https://github.com/junit-team/junit4/pull/778
     protected <T extends Throwable> void validateRootCause(Class<T> rootExceptionClass, Runnable runnable) {

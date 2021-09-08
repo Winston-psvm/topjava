@@ -1,19 +1,23 @@
 package ru.javawebinar.topjava.service;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.dao.DataAccessException;
+import org.springframework.test.context.ActiveProfiles;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.JpaUtil;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import javax.persistence.EntityManagerFactory;
 import javax.validation.ConstraintViolationException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.Assert.assertThrows;
@@ -24,18 +28,28 @@ public class AbstractUserServiceTest extends AbstractServiceTest{
     @Autowired
     protected UserService service;
 
-    @Autowired
-    private CacheManager cacheManager;
+//    @Autowired
+//    private CacheManager cacheManager;
+//
+//    @Autowired
+//    @Lazy
+//    protected JpaUtil jpaUtil;
+//
+//    @Before
+//    public void setup() {
+//        cacheManager.getCache("users").clear();
+//        if (isJpa()) {jpaUtil.clear2ndLevelHibernateCache();}
+//    }
 
-    @Autowired
-    @Lazy
-    protected JpaUtil jpaUtil;
-
-    @Before
-    public void setup() {
-        cacheManager.getCache("users").clear();
-        if (isJpa()) {jpaUtil.clear2ndLevelHibernateCache();}
-    }
+//    Мне лень привязывать к профилям
+//    @Autowired
+//    private EntityManagerFactory entityManagerFactory;
+//
+//    @Test
+//    public void isSecondLevelCacheEnabled(){
+//        Map<String, Object> map = entityManagerFactory.getProperties();
+//        Assert.assertEquals("false",map.get("hibernate.cache.use_second_level_cache"));
+//    }
 
     @Test
     public void create() {
