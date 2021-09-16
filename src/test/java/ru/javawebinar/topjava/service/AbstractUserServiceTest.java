@@ -30,7 +30,7 @@ import static ru.javawebinar.topjava.UserTestData.*;
 @RunWith(SpringRunner.class)
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 @ActiveProfiles("hsqldb")
-public class UserServiceTest {
+public abstract class AbstractUserServiceTest extends AbstractServiceTest {
 
     @Autowired
     protected UserService service;

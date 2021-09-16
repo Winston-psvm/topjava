@@ -263,7 +263,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>1.2.3</version>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
