@@ -7,6 +7,7 @@ import ru.javawebinar.topjava.web.json.JsonUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,14 +20,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MatcherFactory<T> {
     private final Class<T> clazz;
     private final String[] fieldsToIgnore;
+    private final BiConsumer<T,T> consumer;
+    private final BiConsumer<Iterable<T>,Iterable<T>> iterableIterableBiConsumer;
 
     private MatcherFactory(Class<T> clazz, String... fieldsToIgnore) {
         this.clazz = clazz;
         this.fieldsToIgnore = fieldsToIgnore;
+        this.consumer = null;
+        this.iterableIterableBiConsumer = null;
+    }
+
+    private MatcherFactory(Class<T> clazz, BiConsumer<T, T> consumer, BiConsumer<Iterable<T>, Iterable<T>> iterableIterableBiConsumer, String... fieldsToIgnore) {
+        this.clazz = clazz;
+        this.fieldsToIgnore = fieldsToIgnore;
+        this.consumer = consumer;
+        this.iterableIterableBiConsumer = iterableIterableBiConsumer;
     }
 
     public static <T> MatcherFactory<T> usingIgnoringFieldsComparator(Class<T> clazz, String... fieldsToIgnore) {
         return new MatcherFactory<>(clazz, fieldsToIgnore);
+    }
+
+    public static <T> MatcherFactory<T> usingComparator (Class<T> tClass, BiConsumer<T, T> consumer, BiConsumer<Iterable<T>, Iterable<T>> iterableIterableBiConsumer) {
+        return new MatcherFactory<>(tClass, consumer, iterableIterableBiConsumer);
     }
 
     public void assertMatch(T actual, T expected) {
