@@ -16,7 +16,7 @@ dd {
 }
 
 tr[data-mealExcess="false"] {
-    color: green;
+    color: lightgreen;
 }
 
 tr[data-mealExcess="true"] {
