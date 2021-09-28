@@ -15,6 +15,9 @@ dd {
     vertical-align: top;
 }
 
+tr[data-userEnabled="false"] {
+    opacity: 0.2;
+}
 tr[data-mealExcess="false"] {
     color: lightgreen;
 }
