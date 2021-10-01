@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RootController {
 
-//    @Autowired
-//    private MealService mealService;
-
     @GetMapping("/")
     public String root() {
         return "redirect:meals";
@@ -26,8 +23,6 @@ public class RootController {
 
     @GetMapping("/meals")
     public String getMeals() {
-//        model.addAttribute("meals",
-//                MealsUtil.getTos(mealService.getAll(SecurityUtil.authUserId()), SecurityUtil.authUserCaloriesPerDay()));
         return "meals";
     }
 }
