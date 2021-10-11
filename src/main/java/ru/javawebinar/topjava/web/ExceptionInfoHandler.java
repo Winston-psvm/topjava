@@ -62,7 +62,7 @@ public class ExceptionInfoHandler {
         }
         return logAndGetErrorInfo(req, e, true, DATA_ERROR);
     }
-
+//    for commit
     @ExceptionHandler(BindException.class)
     public ResponseEntity<ErrorInfo> bindValidationError(HttpServletRequest req, BindException e) {
         String[] details = e.getBindingResult().getFieldErrors().stream()
